@@ -85,7 +85,7 @@ else
 
 	# show root@ when we do not have colors
 
-	PS1="\u@\h \w \$([[ \$? != 0 ]] && echo \":( \")\$ "
+	PS1="|\$(/usr/bin/battery.sh)| \u@\h \w \$([[ \$? != 0 ]] && echo \":( \")\$ "
 
 	# Use this other PS1 string if you want \W for root and \w for all other users:
 	# PS1="\u@\h $(if [[ ${EUID} == 0 ]]; then echo '\W'; else echo '\w'; fi) \$([[ \$? != 0 ]] && echo \":( \")\$ "
