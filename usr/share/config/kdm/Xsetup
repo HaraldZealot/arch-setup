@@ -1,0 +1,8 @@
+#! /bin/sh
+# Xsetup - run as root before the login dialog appears
+
+cvt 1366 768 60
+xrandr --verbose --newmode "1368x768"   85.25  1368 1440 1576 1784  768 771 781 798 -hsync +vsync
+xrandr --verbose --addmode eDP1 1368x768
+
+#xconsole -geometry 480x130-0-0 -notify -verbose -fn fixed -exitOnFail -file /dev/xconsole &
