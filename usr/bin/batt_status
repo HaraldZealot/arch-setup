@@ -1,0 +1,16 @@
+#!/bin/bash
+
+BATSTATE=`cat /sys/class/power_supply/BAT0/status`
+
+case "${BATSTATE}" in
+   'Full')
+   echo '='
+   ;;
+   'Charging')
+   echo '+'
+   ;;
+   'Discharging')
+   echo '-'
+   ;;
+esac
+

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+BATNOW=`cat /sys/class/power_supply/BAT0/energy_now`
+BATFULL=`cat /sys/class/power_supply/BAT0/energy_full`
+
+CHARGER=$(echo "((1000*${BATNOW}/${BATFULL})%10)>4" | bc)
+CHARGEM=$(echo "100*${BATNOW}/${BATFULL}" | bc)
+CHARGE=$(echo "${CHARGEM}+${CHARGER}" | bc)
+
+if [ $CHARGE -lt 100 ]; then
+    echo ' '$CHARGE
+else
+    echo $CHARGE
+fi

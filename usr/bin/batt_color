@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ $(batt_charge) -gt 15 ]; then
+	echo 32;
+elif [ $(batt_charge) -gt 7 ]; then
+	echo 33;
+else
+	echo 31;
+fi
+
