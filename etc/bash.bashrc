@@ -6,6 +6,8 @@
 # that can't tolerate any output. So make sure this doesn't display
 # anything or bad things will happen !
 
+export MAKEFLAGS=-j5
+
 # Test for an interactive shell. There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
@@ -68,7 +70,7 @@ if [[ $'\n'${match_lhs} == *$'\n'"TERM "${safe_term}* ]] ; then
 	fi
 
 	#\$(/usr/bin/battery.sh)
-	PS1="|$(echo '\[\033[01;$(batt_color)m\]$(batt_charge)% \[\033[01;37m\]$(batt_status)\[\033[00;37m\]')| $(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]\h'; else echo '\[\033[01;32m\]\u@\h'; fi)\[\033[01;36m\] \w \$([[ \$? != 0 ]] && echo \"\[\033[01;31m\]:(\[\033[01;36m\] \")\\$\[\033[00m\] "
+	PS1="|$(echo '\[\033[01;$(batt_color)m\]$(batt_charge)% \[\033[01;37m\]$(batt_status)\[\033[00;37m\]')| $(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]\h'; else echo '\[\033[01;32m\]\u@\h'; fi)\[\033[01;36m\] \w \$([[ \$? != 0 ]] && echo -e \"\[\033[01;31m\]:(\[\033[01;36m\] \")\\n  \\$\[\033[00m\] "
 
 	# Use this other PS1 string if you want \W for root and \w for all other users:
 	# PS1="$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]\h\[\033[01;34m\] \W'; else echo '\[\033[01;32m\]\u@\h\[\033[01;34m\] \w'; fi) \$([[ \$? != 0 ]] && echo \"\[\033[01;31m\]:(\[\033[01;34m\] \")\\$\[\033[00m\] "
